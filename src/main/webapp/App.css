@@ -1,4 +1,19 @@
 /** Add css rules here for your application. */
+.menuPanel {
+    background-color: #ffff00;
+}
+
+.headerPanel {
+    background-color: #adff2f;
+}
+
+.footerPanel {
+    background-color: #f08080;
+}
+
+.contentPanel {
+    background-color: #00ffff;
+}
 
 
 /** Example rules used by the template application (remove for your app) */
