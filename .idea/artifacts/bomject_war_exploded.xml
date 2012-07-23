@@ -9,7 +9,6 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.4.0" />
-          <element id="library" level="project" name="Maven: com.extjs:gxt:2.2.5-gwt22" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:3.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.1.2.RELEASE" />
@@ -20,6 +19,11 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.1.1" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.1.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.1.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.1.1.RELEASE" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.21" />
         </element>
       </element>
       <element id="gwt-compiler-output" facet="bomject/gwt/GWT" />
