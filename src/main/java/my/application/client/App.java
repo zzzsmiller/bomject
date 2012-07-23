@@ -1,12 +1,10 @@
 package my.application.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.widget.client.TextButton;import my.application.client.form.GrettingsForm;
+import my.application.client.form.GrettingsForm;
 
 
 
@@ -22,36 +20,53 @@ public class App implements EntryPoint {
             + "attempting to contact the server. Please check your network "
             + "connection and try again.";
 
-    private DockLayoutPanel dockPanel = new DockLayoutPanel(Style.Unit.PCT);
-
     /**
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        RootPanel.get().add(new Label("TEST"));
 
+        RootPanel.get().setStyleName("bodyStyle");
 
+        /*VerticalPanel mainPanel= new VerticalPanel();
+        mainPanel.setHeight("80%");
+        mainPanel.add(new Label("TEST"));*/
 
+        /*DockLayoutPanel dockPanel = new DockLayoutPanel(Style.Unit.PCT);
+
+//        RootPanel.get().add(new Label("TEST"));
+        dockPanel.setHeight("800px");
+        dockPanel.setWidth("100%");
+*/
         LayoutPanel tpanel = new LayoutPanel();
         tpanel.setStyleName("headerPanel");
         tpanel.add(new Label("Шапка"));
-        dockPanel.addNorth(new Label("Шапка"), 20);
+//        dockPanel.addNorth(tpanel, 20);
+        RootPanel.get("header").add(tpanel);
+        RootPanel.get("header").add(new Label("header"));
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("menuPanel");
         tpanel.add(new Label("Меню"));
-        dockPanel.addWest(tpanel, 30);
+//        dockPanel.addWest(tpanel, 10);
+        RootPanel.get("leftMenu").add(tpanel);
+        RootPanel.get("leftMenu").add(new Label("leftMenu"));
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("footerPanel");
-        tpanel.add(new Label("Меню"));
-        dockPanel.addSouth(tpanel, 20);
+        tpanel.add(new Label("Подвал"));
+//        dockPanel.addSouth(tpanel, 30);
+        RootPanel.get("footer").add(tpanel);
+        RootPanel.get("footer").add(new Label("footer"));
 
-        dockPanel.add(new GrettingsForm());
+//        dockPanel.add(new GrettingsForm());
+        RootPanel.get("content").add(new GrettingsForm());
+        RootPanel.get("content").add(new Label("content"));
 
-        RootPanel.get().add(dockPanel.asWidget());
+        /*mainPanel.add(dockPanel);
+        mainPanel.add(new Label("TEST2"));*/
+//        RootPanel.get().add(dockPanel);
 
-        RootPanel.get().add(new Label("TEST2"));
+//        RootPanel.get().add(new Label("TEST2"));
 
     }
 }

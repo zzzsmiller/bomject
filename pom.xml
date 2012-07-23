@@ -9,12 +9,12 @@
     <groupId>my.application</groupId>
     <artifactId>bomject</artifactId>
     <packaging>war</packaging>
-    <version>1.2</version>
+    <version>1.3</version>
     <name>bomject</name>
 
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.4.0</gwtVersion>
+        <gwtVersion>2.3.0</gwtVersion>
         <javaVersion>1.6</javaVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>

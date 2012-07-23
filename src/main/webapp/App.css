@@ -1,4 +1,14 @@
 /** Add css rules here for your application. */
+html {
+    height: 100%;
+    margin: 0;
+}
+.bodyStyle {
+    height: 100%;
+    margin: 0;
+    background-color: #ff8c00;
+}
+
 .menuPanel {
     background-color: #ffff00;
 }
@@ -13,6 +23,27 @@
 
 .contentPanel {
     background-color: #00ffff;
+}
+
+#header {
+    height: 60px;
+}
+
+#leftMenu {
+    height: 100%;
+    width: 250px;
+    float: left;
+}
+
+#content {
+    height: 100%;
+    width: 100%;
+}
+
+#footer {
+    clear: both;
+    width: 100%;
+    height: 60px;
 }
 
 
