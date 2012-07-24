@@ -1,11 +1,15 @@
 package my.application.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import my.application.client.form.GrettingsForm;
-
 
 
 /**
@@ -31,42 +35,53 @@ public class App implements EntryPoint {
         mainPanel.setHeight("80%");
         mainPanel.add(new Label("TEST"));*/
 
-        /*DockLayoutPanel dockPanel = new DockLayoutPanel(Style.Unit.PCT);
+        final DockLayoutPanel dockPanel = new DockLayoutPanel(Style.Unit.PCT);
 
 //        RootPanel.get().add(new Label("TEST"));
-        dockPanel.setHeight("800px");
-        dockPanel.setWidth("100%");
-*/
+        setSizeDockPanel(dockPanel);
         LayoutPanel tpanel = new LayoutPanel();
         tpanel.setStyleName("headerPanel");
         tpanel.add(new Label("Шапка"));
-//        dockPanel.addNorth(tpanel, 20);
-        RootPanel.get("header").add(tpanel);
-        RootPanel.get("header").add(new Label("header"));
+        dockPanel.addNorth(tpanel, 20);
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("menuPanel");
         tpanel.add(new Label("Меню"));
-//        dockPanel.addWest(tpanel, 10);
-        RootPanel.get("leftMenu").add(tpanel);
-        RootPanel.get("leftMenu").add(new Label("leftMenu"));
+        dockPanel.addWest(tpanel, 30);
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("footerPanel");
         tpanel.add(new Label("Подвал"));
-//        dockPanel.addSouth(tpanel, 30);
-        RootPanel.get("footer").add(tpanel);
-        RootPanel.get("footer").add(new Label("footer"));
+        dockPanel.addSouth(tpanel, 20);
 
-//        dockPanel.add(new GrettingsForm());
-        RootPanel.get("content").add(new GrettingsForm());
-        RootPanel.get("content").add(new Label("content"));
+        dockPanel.add(new GrettingsForm());
 
         /*mainPanel.add(dockPanel);
         mainPanel.add(new Label("TEST2"));*/
-//        RootPanel.get().add(dockPanel);
+        Window.addResizeHandler(new ResizeHandler() {
+            @Override
+            public void onResize(ResizeEvent resizeEvent) {
+                String height = new StringBuilder("px").insert(0, resizeEvent.getHeight()).toString();
+                dockPanel.setHeight(height);
+                String width = new StringBuilder("px").insert(0, resizeEvent.getWidth()).toString();
+                dockPanel.setWidth(width);
+            }
+        });
+
+        RootPanel.get().add(dockPanel);
 
 //        RootPanel.get().add(new Label("TEST2"));
 
+
+
     }
+
+    private void setSizeDockPanel(DockLayoutPanel dockPanel) {
+        String height = new StringBuilder("px").insert(0, Window.getClientHeight()).toString();
+        dockPanel.setHeight(height);
+        String width = new StringBuilder("px").insert(0, Window.getClientWidth()).toString();
+        dockPanel.setWidth(width);
+    }
+
+
 }
