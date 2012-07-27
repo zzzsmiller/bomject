@@ -9,12 +9,12 @@
     <groupId>my.application</groupId>
     <artifactId>bomject</artifactId>
     <packaging>war</packaging>
-    <version>1.4</version>
+    <version>1.6</version>
     <name>bomject</name>
 
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.3.0</gwtVersion>
+        <gwt.version>2.4.0</gwt.version>
         <javaVersion>1.6</javaVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
@@ -25,14 +25,26 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.extjs</groupId>
+            <artifactId>gxt</artifactId>
+            <version>2.2.5-gwt22</version>
+            <type>jar</type>
+            <scope>compile</scope>
         </dependency>
         <!--<dependency>
             <groupId>com.extjs</groupId>
@@ -97,7 +109,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>${gwtVersion}</version>
+                <version>${gwt.version}</version>
                 <executions>
                     <execution>
                         <goals>

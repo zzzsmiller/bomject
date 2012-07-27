@@ -1,15 +1,14 @@
 package my.application.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.*;
 import my.application.client.form.GrettingsForm;
+import my.application.client.utils.FormSizeUtil;
+
+import static com.google.gwt.dom.client.Style.Unit.PX;
 
 
 /**
@@ -35,36 +34,49 @@ public class App implements EntryPoint {
         mainPanel.setHeight("80%");
         mainPanel.add(new Label("TEST"));*/
 
-        final DockLayoutPanel dockPanel = new DockLayoutPanel(Style.Unit.PCT);
+        final DockLayoutPanel dockPanel = new DockLayoutPanel(PX);
 
 //        RootPanel.get().add(new Label("TEST"));
         setSizeDockPanel(dockPanel);
         LayoutPanel tpanel = new LayoutPanel();
         tpanel.setStyleName("headerPanel");
-        tpanel.add(new Label("Шапка"));
-        dockPanel.addNorth(tpanel, 20);
-
-        tpanel = new LayoutPanel();
-        tpanel.setStyleName("menuPanel");
-        tpanel.add(new Label("Меню"));
-        dockPanel.addWest(tpanel, 30);
+        HorizontalPanel hpanel = new HorizontalPanel();
+        tpanel.add(hpanel);
+        hpanel.add(new Label("Шапка"));
+        hpanel.add(new Button("Кнопка"));
+        dockPanel.addNorth(tpanel, 80);
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("footerPanel");
         tpanel.add(new Label("Подвал"));
-        dockPanel.addSouth(tpanel, 20);
+        dockPanel.addSouth(tpanel, 50);
+
+        tpanel = new LayoutPanel();
+        tpanel.setStyleName("menuPanel");
+        tpanel.add(new Label("Меню"));
+        dockPanel.addWest(tpanel, 220);
 
         dockPanel.add(new GrettingsForm());
+
+
+
+        dockPanel.addHandler(new ResizeHandler() {
+            @Override
+            public void onResize(ResizeEvent event) {
+                int i = 1;
+            }
+        }, ResizeEvent.getType());
 
         /*mainPanel.add(dockPanel);
         mainPanel.add(new Label("TEST2"));*/
         Window.addResizeHandler(new ResizeHandler() {
             @Override
             public void onResize(ResizeEvent resizeEvent) {
-                String height = new StringBuilder("px").insert(0, resizeEvent.getHeight()).toString();
+                /*String height = new StringBuilder("px").insert(0, resizeEvent.getHeight()).toString();
                 dockPanel.setHeight(height);
                 String width = new StringBuilder("px").insert(0, resizeEvent.getWidth()).toString();
-                dockPanel.setWidth(width);
+                dockPanel.setWidth(width);*/
+                setSizeDockPanel(dockPanel);
             }
         });
 
@@ -77,10 +89,10 @@ public class App implements EntryPoint {
     }
 
     private void setSizeDockPanel(DockLayoutPanel dockPanel) {
-        String height = new StringBuilder("px").insert(0, Window.getClientHeight()).toString();
-        dockPanel.setHeight(height);
-        String width = new StringBuilder("px").insert(0, Window.getClientWidth()).toString();
-        dockPanel.setWidth(width);
+//        String height = new StringBuilder("px").insert(0, Window.getClientHeight()).toString();
+        dockPanel.setHeight(FormSizeUtil.pixelFormat(Window.getClientHeight()));
+//        String width = new StringBuilder("px").insert(0, Window.getClientWidth()).toString();
+        dockPanel.setWidth(FormSizeUtil.pixelFormat(Window.getClientWidth()));
     }
 
 
