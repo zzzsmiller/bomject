@@ -22,12 +22,16 @@ public class GrettingsForm extends TabPanel {
 //    private GrettingsForm instance;
 
     public GrettingsForm() {
-//        instance = this;
 
-        setHeight("600px");
-//        setStyleName("contentPanel");
-        setAnimScroll(true);
         initTabBar();
+
+        setAnimScroll(true);
+        setBorders(true);
+//        TabPanelMessages message = new TabPanelMessages();
+//        message.setCloseText("Некое сообщение");
+//        setMessages(message);
+        setDeferHeight(false);
+        setHeight("200px");
 
         /*getParent().addHandler(new ResizeHandler() {
             @Override
@@ -42,7 +46,10 @@ public class GrettingsForm extends TabPanel {
         TabItem tabItem = new TabItem();
 
         tabItem.setText("Просмотр всех комментариев");
-        tabItem.add(new HTML("bla-bla-bla"));
+        tabItem.scrollIntoView(this);
+        for (int i = 0; i < 50; i++) {
+            tabItem.add(new HTML("bla-bla-bla"));
+        }
         add(tabItem);
 
         tabItem = new TabItem("Добавить комментарий");
@@ -62,13 +69,13 @@ public class GrettingsForm extends TabPanel {
         add(new HTML("bli-bli-bli"), "Редактировать комментарий");
         add(new HTML("ble-ble-ble"), "Удалить комментарий");
 */
-        setTabIndex(2);
+
     }
 
     @Override
     protected void onAttach() {
         super.onAttach();
-        setSize(getParent().getOffsetWidth(), getParent().getOffsetHeight());
+//        setSize(getParent().getOffsetWidth(), getParent().getOffsetHeight());
         getParent().addHandler(new ResizeHandler() {
             @Override
             public void onResize(ResizeEvent event) {

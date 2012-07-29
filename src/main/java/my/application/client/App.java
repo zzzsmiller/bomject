@@ -27,16 +27,10 @@ public class App implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-
         RootPanel.get().setStyleName("bodyStyle");
-
-        /*VerticalPanel mainPanel= new VerticalPanel();
-        mainPanel.setHeight("80%");
-        mainPanel.add(new Label("TEST"));*/
 
         final DockLayoutPanel dockPanel = new DockLayoutPanel(PX);
 
-//        RootPanel.get().add(new Label("TEST"));
         setSizeDockPanel(dockPanel);
         LayoutPanel tpanel = new LayoutPanel();
         tpanel.setStyleName("headerPanel");
@@ -58,8 +52,6 @@ public class App implements EntryPoint {
 
         dockPanel.add(new GrettingsForm());
 
-
-
         dockPanel.addHandler(new ResizeHandler() {
             @Override
             public void onResize(ResizeEvent event) {
@@ -67,31 +59,18 @@ public class App implements EntryPoint {
             }
         }, ResizeEvent.getType());
 
-        /*mainPanel.add(dockPanel);
-        mainPanel.add(new Label("TEST2"));*/
         Window.addResizeHandler(new ResizeHandler() {
             @Override
             public void onResize(ResizeEvent resizeEvent) {
-                /*String height = new StringBuilder("px").insert(0, resizeEvent.getHeight()).toString();
-                dockPanel.setHeight(height);
-                String width = new StringBuilder("px").insert(0, resizeEvent.getWidth()).toString();
-                dockPanel.setWidth(width);*/
                 setSizeDockPanel(dockPanel);
             }
         });
 
         RootPanel.get().add(dockPanel);
-
-//        RootPanel.get().add(new Label("TEST2"));
-
-
-
     }
 
     private void setSizeDockPanel(DockLayoutPanel dockPanel) {
-//        String height = new StringBuilder("px").insert(0, Window.getClientHeight()).toString();
         dockPanel.setHeight(FormSizeUtil.pixelFormat(Window.getClientHeight()));
-//        String width = new StringBuilder("px").insert(0, Window.getClientWidth()).toString();
         dockPanel.setWidth(FormSizeUtil.pixelFormat(Window.getClientWidth()));
     }
 
