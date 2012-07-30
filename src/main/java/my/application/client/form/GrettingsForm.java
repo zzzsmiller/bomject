@@ -1,5 +1,6 @@
 package my.application.client.form;
 
+import com.extjs.gxt.ui.client.Style;
 import com.extjs.gxt.ui.client.widget.TabItem;
 import com.extjs.gxt.ui.client.widget.TabPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -20,7 +21,8 @@ public class GrettingsForm extends TabPanel {
         addStyleName("contentPanel");
         setAnimScroll(true);
         setBorders(true);
-//        setDeferHeight(true);
+        setDeferHeight(true);
+        setTabScroll(true);
 //        setHeight("300px");
 
     }
@@ -29,8 +31,9 @@ public class GrettingsForm extends TabPanel {
         TabItem tabItem = new TabItem();
 
         tabItem.setText("Просмотр всех комментариев");
-        tabItem.scrollIntoView(this);
-        for (int i = 0; i < 50; i++) {
+//        tabItem.scrollIntoView(this);
+        tabItem.setScrollMode(Style.Scroll.AUTOY);
+        for (int i = 0; i < 1000; i++) {
             tabItem.add(new HTML("bla-bla-bla"));
         }
         add(tabItem);
