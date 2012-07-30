@@ -15,13 +15,13 @@ import com.google.gwt.user.client.ui.HTML;
 public class GrettingsForm extends TabPanel {
 
     public GrettingsForm() {
-
+        super();
         initTabBar();
-
+        addStyleName("contentPanel");
         setAnimScroll(true);
         setBorders(true);
-        setDeferHeight(false);
-        setHeight("200px");
+//        setDeferHeight(true);
+//        setHeight("300px");
 
     }
 

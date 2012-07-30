@@ -23,34 +23,41 @@ public class App implements EntryPoint {
             + "attempting to contact the server. Please check your network "
             + "connection and try again.";
 
+    public static final int HEADER_SIZE = 80;
+    public static final int FOOTER_SIZE = 50;
+    public static final int MENU_SIZE = 220;
+
+    private final DockLayoutPanel dockPanel = new DockLayoutPanel(PX);
+
+    private Widget contentPanel;
+
     /**
      * This is the entry point method.
      */
     public void onModuleLoad() {
         RootPanel.get().setStyleName("bodyStyle");
 
-        final DockLayoutPanel dockPanel = new DockLayoutPanel(PX);
+        setPanelsSize();
 
-        setSizeDockPanel(dockPanel);
         LayoutPanel tpanel = new LayoutPanel();
         tpanel.setStyleName("headerPanel");
         HorizontalPanel hpanel = new HorizontalPanel();
         tpanel.add(hpanel);
         hpanel.add(new Label("Шапка"));
         hpanel.add(new Button("Кнопка"));
-        dockPanel.addNorth(tpanel, 80);
+        dockPanel.addNorth(tpanel, HEADER_SIZE);
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("footerPanel");
         tpanel.add(new Label("Подвал"));
-        dockPanel.addSouth(tpanel, 50);
+        dockPanel.addSouth(tpanel, FOOTER_SIZE);
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("menuPanel");
         tpanel.add(new Label("Меню"));
-        dockPanel.addWest(tpanel, 220);
+        dockPanel.addWest(tpanel, MENU_SIZE);
 
-        dockPanel.add(new GrettingsForm());
+        dockPanel.add(contentPanel);
 
         dockPanel.addHandler(new ResizeHandler() {
             @Override
@@ -62,16 +69,28 @@ public class App implements EntryPoint {
         Window.addResizeHandler(new ResizeHandler() {
             @Override
             public void onResize(ResizeEvent resizeEvent) {
-                setSizeDockPanel(dockPanel);
+                setPanelsSize();
             }
         });
 
+//        VerticalPanel vp = new VerticalPanel();
+//        vp.addStyleName("contentPanel");
+//        vp.add(dockPanel);
         RootPanel.get().add(dockPanel);
     }
 
-    private void setSizeDockPanel(DockLayoutPanel dockPanel) {
+    private void initContentPanel() {
+        contentPanel = new GrettingsForm();
+    }
+
+    private void setPanelsSize() {
         dockPanel.setHeight(FormSizeUtil.pixelFormat(Window.getClientHeight()));
         dockPanel.setWidth(FormSizeUtil.pixelFormat(Window.getClientWidth()));
+        if (contentPanel == null) {
+            initContentPanel();
+        }
+        contentPanel.setHeight(FormSizeUtil.pixelFormat(Window.getClientHeight() - HEADER_SIZE - FOOTER_SIZE));
+        contentPanel.setWidth(FormSizeUtil.pixelFormat(Window.getClientWidth() - MENU_SIZE));
     }
 
 
