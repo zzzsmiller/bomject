@@ -6,6 +6,8 @@ import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import my.application.client.form.GrettingsForm;
+import my.application.client.panel.*;
+import my.application.client.panel.HeaderPanel;
 import my.application.client.utils.FormSizeUtil;
 
 import static com.google.gwt.dom.client.Style.Unit.PX;
@@ -23,7 +25,7 @@ public class App implements EntryPoint {
             + "attempting to contact the server. Please check your network "
             + "connection and try again.";
 
-    public static final int HEADER_SIZE = 80;
+    public static final int HEADER_SIZE = 123;
     public static final int FOOTER_SIZE = 50;
     public static final int MENU_SIZE = 220;
 
@@ -40,12 +42,12 @@ public class App implements EntryPoint {
         setPanelsSize();
 
         LayoutPanel tpanel = new LayoutPanel();
-        tpanel.setStyleName("headerPanel");
+        /*tpanel.setStyleName("headerPanel");
         HorizontalPanel hpanel = new HorizontalPanel();
         tpanel.add(hpanel);
         hpanel.add(new Label("Шапка"));
-        hpanel.add(new Button("Кнопка"));
-        dockPanel.addNorth(tpanel, HEADER_SIZE);
+        hpanel.add(new Button("Кнопка"));*/
+        dockPanel.addNorth(new HeaderPanel(HEADER_SIZE), HEADER_SIZE);
 
         tpanel = new LayoutPanel();
         tpanel.setStyleName("footerPanel");
@@ -59,13 +61,6 @@ public class App implements EntryPoint {
 
         dockPanel.add(contentPanel);
 
-        dockPanel.addHandler(new ResizeHandler() {
-            @Override
-            public void onResize(ResizeEvent event) {
-                int i = 1;
-            }
-        }, ResizeEvent.getType());
-
         Window.addResizeHandler(new ResizeHandler() {
             @Override
             public void onResize(ResizeEvent resizeEvent) {
@@ -73,9 +68,6 @@ public class App implements EntryPoint {
             }
         });
 
-//        VerticalPanel vp = new VerticalPanel();
-//        vp.addStyleName("contentPanel");
-//        vp.add(dockPanel);
         RootPanel.get().add(dockPanel);
     }
 

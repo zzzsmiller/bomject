@@ -1,0 +1,122 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:HTMLPanel>
+        <table width="206" vspace="0" cellspacing="0" cellpadding="0" align="center" hspace="0"
+               style="border-collapse:collapse;">
+            <tbody>
+                <tr>
+                    <td width="206">
+                        <h3>Contact Us</h3>
+                        <p>Telephone:
+                            <span>+1(212) 378-4108</span>
+                        </p>
+                        <p>Email:
+                            <span>
+                                <a href="mailto:sales@dataart.com">sales@dataart.com</a>
+                            </span>
+                        </p>
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="206" align="left">
+                        <h2>Submit RFP</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="206" class="hideable">
+                        <h4>Enter your information below, and we'll respond to you directly</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="206" valign="bottom" height="27" class="hideable">
+                        <input type="hidden" value="35" name="id">
+                        <div class="rfpError">Please fill this field</div>
+                        <div class="rfpInputLeft">
+                            <div class="rfpInputRight">
+                                <div class="rfpInputMain">
+                                    <input type="text" value="Name*" maxlength="200" size="24" name="FName" id="FName"
+                                           autocomplete="off">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="206" height="27" class="hideable">
+                        <div class="rfpError">Please fill this field</div>
+                        <div class="rfpInputLeft">
+                            <div class="rfpInputRight">
+                                <div class="rfpInputMain">
+                                    <input type="text" value="Company*" maxlength="200" size="24" name="FCompany"
+                                           id="FCompany" autocomplete="off">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="206" height="27" class="hideable">
+                        <div class="rfpError">Please fill this field</div>
+                        <div class="rfpInputLeft">
+                            <div class="rfpInputRight">
+                                <div class="rfpInputMain">
+                                    <input type="text" value="Email*" maxlength="200" size="24" name="FMail" id="FMail"
+                                           autocomplete="off">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="206" height="31" class="hideable">
+                        <div class="rfpError">Please fill this field</div>
+                        <div class="rfpInputLeft">
+                            <div class="rfpInputRight">
+                                <div class="rfpInputMain">
+                                    <input type="text" value="Phone" maxlength="200" size="24" name="FPhone" id="FPhone"
+                                           autocomplete="off">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="206" height="109" class="hideable">
+                        <div class="rfpError">Please fill this field</div>
+                        <div class="rfpTextareaLeft">
+                            <div class="rfpTextareaRight">
+                                <div class="rfpTextareaMain">
+                                    <textarea cols="30" rows="6" name="FAddinfo" id="FAddinfo">How can we help you?*
+                                    </textarea>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!--
+
+                -->
+                <tr>
+                    <td width="206" class="hideable">
+                        <!--[if IE]>
+                          <style type="text/css">
+                              .rfpInputRight input {
+                                  padding-top: 3px;
+                              }
+                          </style>
+                          <![endif]-->
+                        <input type="button" onclick="return false;" class="submit1" id="submit1" value="Submit"
+                               name="submit1" style="background-position: 0px -27px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </g:HTMLPanel>
+</ui:UiBinder>

@@ -1,0 +1,61 @@
+.dartHeader {
+    background-color: #ffffff;
+}
+
+.dartH1 {
+    color: #325D92;
+    font-size: 20px;
+    font-weight: normal;
+    left: 36%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 22px;
+}
+
+.dartLogo {
+    left: 14px;
+    position: absolute;
+    top: 22px;
+}
+
+.dartTopNavigation {
+    background: url("/images/layout/blue-bar.jpg") no-repeat scroll 0 0 #084898;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 34px;
+    margin: 75px 0 0;
+    position: absolute;
+    width: 1097px;
+}
+
+.dartLeftColumn {
+    width: 205px;
+}
+
+.dartBlock {
+    background-color: #FFFFFF;
+    background-position: -217px 0;
+    background-repeat: repeat-y;
+    width: 205px;
+}
+
+.dartFooter {
+    background: url("/images/layout/footer-bg.png") repeat-x scroll center top #EDEDED;
+    color: #808080;
+    min-width: 1097px;
+    padding: 14px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.dartP {
+    margin: 8px 0 0;
+    text-align: center;
+}
+
+.dartWrap {
+    margin: 20px auto;
+    position: relative;
+    width: 1097px;
+}
