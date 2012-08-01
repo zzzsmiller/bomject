@@ -54,10 +54,9 @@ public class App implements EntryPoint {
         tpanel.add(new Label("Подвал"));
         dockPanel.addSouth(tpanel, FOOTER_SIZE);
 
-        tpanel = new LayoutPanel();
-        tpanel.setStyleName("menuPanel");
-        tpanel.add(new Label("Меню"));
-        dockPanel.addWest(tpanel, MENU_SIZE);
+        MenuPanel menuPanel = new MenuPanel();
+        menuPanel.setStyleName("menuPanel");
+        dockPanel.addWest(menuPanel, MENU_SIZE);
 
         dockPanel.add(contentPanel);
 

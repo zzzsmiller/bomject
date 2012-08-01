@@ -4,6 +4,7 @@ import com.extjs.gxt.ui.client.Style;
 import com.extjs.gxt.ui.client.widget.TabItem;
 import com.extjs.gxt.ui.client.widget.TabPanel;
 import com.google.gwt.user.client.ui.HTML;
+import my.application.client.common.Menu;
 
 
 /**
@@ -25,7 +26,7 @@ public class GrettingsForm extends TabPanel {
     private void initTabBar() {
         TabItem tabItem = new TabItem();
 
-        tabItem.setText("Просмотр всех комментариев");
+        tabItem.setText(Menu.SHOW_ALL.title());
 //        tabItem.scrollIntoView(this);
         tabItem.setScrollMode(Style.Scroll.AUTOY);
         for (int i = 0; i < 1000; i++) {
@@ -33,15 +34,15 @@ public class GrettingsForm extends TabPanel {
         }
         add(tabItem);
 
-        tabItem = new TabItem("Добавить комментарий");
+        tabItem = new TabItem(Menu.ADD_COMMENT.title());
         tabItem.addText("blu-blu-blu");
         add(tabItem);
 
-        tabItem = new TabItem("Редактировать комментарий");
+        tabItem = new TabItem(Menu.EDIT_COMMENT.title());
         tabItem.addText("bli-bli-bli");
         add(tabItem);
 
-        tabItem = new TabItem("Удалить комментарий");
+        tabItem = new TabItem(Menu.DEL_COMMENT.title());
         tabItem.addText("ble-ble-ble");
         add(tabItem);
 

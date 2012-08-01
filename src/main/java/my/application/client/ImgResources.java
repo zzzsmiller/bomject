@@ -15,6 +15,6 @@ public interface ImgResources extends ClientBundle {
 
     public static final ImgResources INSTANCE = GWT.create(ImgResources.class);
 
-    @Source("../resources/software-company.gif")
+    @Source("../resources/logo.jpg")
     ImageResource logo();
 }
