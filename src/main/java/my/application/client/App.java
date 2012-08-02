@@ -56,6 +56,11 @@ public class App implements EntryPoint {
 
         MenuPanel menuPanel = new MenuPanel();
         menuPanel.setStyleName("menuPanel");
+        if (contentPanel != null) {
+            ((GrettingsForm) contentPanel).registerObserver(menuPanel);
+            menuPanel.registerObserver((GrettingsForm) contentPanel);
+        }
+
         dockPanel.addWest(menuPanel, MENU_SIZE);
 
         dockPanel.add(contentPanel);
