@@ -1,4 +1,4 @@
-package my.application.client.form;
+package my.application.client.panel;
 
 import com.extjs.gxt.ui.client.Style;
 import com.extjs.gxt.ui.client.event.BaseEvent;
@@ -8,8 +8,7 @@ import com.extjs.gxt.ui.client.widget.TabItem;
 import com.extjs.gxt.ui.client.widget.TabPanel;
 import com.google.gwt.user.client.ui.HTML;
 import my.application.client.common.Menu;
-import my.application.client.panel.MenuObserver;
-import my.application.client.panel.MenuSubject;
+import my.application.client.form.GreetingForm;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,7 +21,7 @@ import java.util.HashSet;
  * Time: 1:37 PM
  * To change this template use File | Settings | File Templates.
  */
-public class GrettingsForm extends TabPanel implements MenuObserver, MenuSubject {
+public class GrettingsTabPanel extends TabPanel implements MenuObserver, MenuSubject {
 
     private HashMap<Menu, MenuTabItem> tabs = new HashMap<Menu, MenuTabItem>();
     private HashSet<MenuObserver> observers = new HashSet<MenuObserver>();
@@ -33,12 +32,7 @@ public class GrettingsForm extends TabPanel implements MenuObserver, MenuSubject
         MenuTabItem(Menu point) {
             this.point = point;
             setText(point.title());
-            addListener(Events.Select, new Listener<BaseEvent>() {
-                @Override
-                public void handleEvent(BaseEvent be) {
-                    notifyObservers();
-                }
-            });
+            add(new GreetingForm(point));
         }
 
         public Menu getPoint() {
@@ -46,7 +40,7 @@ public class GrettingsForm extends TabPanel implements MenuObserver, MenuSubject
         }
     }
 
-    public GrettingsForm() {
+    public GrettingsTabPanel() {
         initTabBar();
         addStyleName("contentPanel");
         setAnimScroll(true);

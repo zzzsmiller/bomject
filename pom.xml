@@ -9,7 +9,7 @@
     <groupId>my.application</groupId>
     <artifactId>bomject</artifactId>
     <packaging>war</packaging>
-    <version>2.2</version>
+    <version>2.3</version>
     <name>bomject</name>
 
     <properties>
@@ -134,8 +134,12 @@
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nConstantsBundles>
                         <i18nMessagesBundle>my.application.client.Messages</i18nMessagesBundle>
-                        <i18nConstantsBundle>my.application.client.MenuMessages</i18nConstantsBundle>
                     </i18nConstantsBundles>
+                    <i18nMessagesBundles>
+                        <i18nMessagesBundle>my.application.client.i18n.MenuMessages</i18nMessagesBundle>
+                        <i18nMessagesBundle>my.application.client.i18n.GreetingFormMessages</i18nMessagesBundle>
+                        <i18nMessagesBundle>my.application.client.i18n.SystemMessages</i18nMessagesBundle>
+                    </i18nMessagesBundles>
                 </configuration>
             </plugin>
 

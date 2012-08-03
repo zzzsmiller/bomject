@@ -68,6 +68,15 @@ html {
     cursor: default;
 }
 
+.errorLabel {
+    color: #ff0000;
+    font-size: 14px;
+}
+
+.formLabelInline div,label{
+    white-space: nowrap;
+}
+
 
 /** Example rules used by the template application (remove for your app) */
 h1 {

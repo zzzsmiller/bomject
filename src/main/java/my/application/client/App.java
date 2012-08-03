@@ -5,7 +5,7 @@ import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
-import my.application.client.form.GrettingsForm;
+import my.application.client.panel.GrettingsTabPanel;
 import my.application.client.panel.*;
 import my.application.client.panel.HeaderPanel;
 import my.application.client.utils.FormSizeUtil;
@@ -57,8 +57,8 @@ public class App implements EntryPoint {
         MenuPanel menuPanel = new MenuPanel();
         menuPanel.setStyleName("menuPanel");
         if (contentPanel != null) {
-            ((GrettingsForm) contentPanel).registerObserver(menuPanel);
-            menuPanel.registerObserver((GrettingsForm) contentPanel);
+            ((GrettingsTabPanel) contentPanel).registerObserver(menuPanel);
+            menuPanel.registerObserver((GrettingsTabPanel) contentPanel);
         }
 
         dockPanel.addWest(menuPanel, MENU_SIZE);
@@ -76,7 +76,7 @@ public class App implements EntryPoint {
     }
 
     private void initContentPanel() {
-        contentPanel = new GrettingsForm();
+        contentPanel = new GrettingsTabPanel();
     }
 
     private void setPanelsSize() {
