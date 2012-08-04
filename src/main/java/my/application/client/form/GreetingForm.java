@@ -28,13 +28,9 @@ public class GreetingForm extends FormPanel {
     private GreetingFormMessages msgs;
 
     public GreetingForm(Menu point) {
-        if (point == null || Menu.SHOW_ALL.equals(point)) {
-            add(new ErrorLabel(MessageFacotry.getSystemMessages().errorLabel()));
-        } else {
-            formData = new FormData();
-            initForm();
-            setMode(point);
-        }
+        formData = new FormData();
+        initForm();
+        setMode(point);
     }
 
     private void initForm() {

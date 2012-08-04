@@ -8,7 +8,11 @@ import com.extjs.gxt.ui.client.widget.TabItem;
 import com.extjs.gxt.ui.client.widget.TabPanel;
 import com.google.gwt.user.client.ui.HTML;
 import my.application.client.common.Menu;
+import my.application.client.common.MessageFacotry;
 import my.application.client.form.GreetingForm;
+import my.application.client.form.GreetingGrid;
+import my.application.client.form.LiveGreetingGrid;
+import my.application.client.widgets.ErrorLabel;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,7 +36,13 @@ public class GrettingsTabPanel extends TabPanel implements MenuObserver, MenuSub
         MenuTabItem(Menu point) {
             this.point = point;
             setText(point.title());
-            add(new GreetingForm(point));
+            if (point == null) {
+                add(new ErrorLabel(MessageFacotry.getSystemMessages().errorLabel()));
+            } else if (Menu.SHOW_ALL.equals(point)) {
+                add(new GreetingGrid());
+            } else {
+                add(new GreetingForm(point));
+            }
         }
 
         public Menu getPoint() {
