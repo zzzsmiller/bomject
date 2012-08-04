@@ -11,7 +11,6 @@ import my.application.client.common.Menu;
 import my.application.client.common.MessageFacotry;
 import my.application.client.form.GreetingForm;
 import my.application.client.form.GreetingGrid;
-import my.application.client.form.LiveGreetingGrid;
 import my.application.client.widgets.ErrorLabel;
 
 import java.util.HashMap;
@@ -39,7 +38,7 @@ public class GrettingsTabPanel extends TabPanel implements MenuObserver, MenuSub
             if (point == null) {
                 add(new ErrorLabel(MessageFacotry.getSystemMessages().errorLabel()));
             } else if (Menu.SHOW_ALL.equals(point)) {
-                add(new GreetingGrid());
+                add(new GreetingGrid().getGrid());
             } else {
                 add(new GreetingForm(point));
             }
@@ -106,7 +105,7 @@ public class GrettingsTabPanel extends TabPanel implements MenuObserver, MenuSub
     @Override
     public void notifyObservers() {
         for (MenuObserver observer : observers) {
-            observer.update(((MenuTabItem)getSelectedItem()).getPoint());
+            observer.update(((MenuTabItem) getSelectedItem()).getPoint());
         }
     }
 

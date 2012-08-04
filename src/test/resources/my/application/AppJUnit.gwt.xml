@@ -4,6 +4,6 @@
   <inherits name='my.application.App' />
 
   <!-- Specify the path to any remote services.                   -->
-  <servlet path="/App/greet" class="my.application.server.GreetingServiceImpl" />
+  <servlet path="/App/greet" class="my.application.server.GreetingServiceSampleImpl" />
 
 </module>

@@ -34,7 +34,7 @@ public class GreetingForm extends FormPanel {
     }
 
     private void initForm() {
-        setSize(400, 300);
+        setSize(800, 400);
 //        setFieldWidth(50);
 
         msgs = MessageFacotry.getGreetingFormMessages();

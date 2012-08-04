@@ -1,6 +1,8 @@
 package my.application.client.common;
 
-import my.application.client.GreetingService;
+import com.google.gwt.core.client.GWT;
+import my.application.client.service.GreetingService;
+import my.application.client.service.GreetingServiceAsync;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,4 +13,12 @@ import my.application.client.GreetingService;
  */
 public class ServiceFactory {
 
+    private static GreetingServiceAsync greetingService;
+
+    public static GreetingServiceAsync getGreetingService() {
+        if (greetingService == null) {
+            greetingService = GWT.create(GreetingService.class);
+        }
+        return greetingService;
+    }
 }
