@@ -13,9 +13,19 @@ import java.util.List;
  * Time: 4:01 PM
  * To change this template use File | Settings | File Templates.
  */
-@RemoteServiceRelativePath("service/greetingService")
+@RemoteServiceRelativePath("service/greetingService2")
 public interface GreetingService extends RemoteService{
 
-    List<Greeting> getGreetings();
+    List<Greeting> getAllGreetings();
+
+    void addGreeting(Greeting greeting);
+
+    void removeGreeting(int id);
+
+    Greeting getGreeting(int id);
+
+    List<Greeting> getGreetingByAuthor(String author);
+
+    String test();
 
 }

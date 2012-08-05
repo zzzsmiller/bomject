@@ -8,5 +8,16 @@ import my.application.shared.entity.Greeting;
 import java.util.List;
 
 public interface GreetingServiceAsync {
-    void getGreetings(AsyncCallback<List<Greeting>> async);
+
+    void getAllGreetings(AsyncCallback<List<Greeting>> async);
+
+    void addGreeting(Greeting greeting, AsyncCallback<Void> async);
+
+    void removeGreeting(int id, AsyncCallback<Void> async);
+
+    void getGreeting(int id, AsyncCallback<Greeting> async);
+
+    void getGreetingByAuthor(String author, AsyncCallback<List<Greeting>> async);
+
+    void test(AsyncCallback<String> async);
 }

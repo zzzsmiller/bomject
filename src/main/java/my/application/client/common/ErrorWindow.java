@@ -14,16 +14,24 @@ public class ErrorWindow extends Window {
 
     private static ErrorWindow instance;
 
-    public ErrorWindow() {
-        add(new ErrorLabel(MessageFacotry.getSystemMessages().errorLabel()));
+    private ErrorWindow() {
         instance = this;
     }
 
     public static void showError() {
+        getInstance().add(new ErrorLabel(MessageFacotry.getSystemMessages().errorLabel()));
+        getInstance().show();
+    }
+
+    public static void showError(Throwable caught) {
+        getInstance().add(new ErrorLabel(caught.getMessage()));
+        getInstance().show();
+    }
+
+    private static ErrorWindow getInstance() {
         if (instance == null) {
             instance = new ErrorWindow();
         }
-        instance.show();
+        return instance;
     }
-
 }

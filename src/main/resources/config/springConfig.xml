@@ -23,6 +23,6 @@
     </bean>
     <!--myBatis-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.smiller.musject.server.persistence"/>
+        <property name="basePackage" value="my.application.server.service.persistence"/>
     </bean>
 </beans>

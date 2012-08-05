@@ -75,6 +75,7 @@ html {
 
 .formLabelInline div,label{
     white-space: nowrap;
+    width: 100px;
 }
 
 

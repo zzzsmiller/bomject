@@ -37,32 +37,10 @@ public class GreetingGrid {
     }
 
     public GreetingGrid() {
-        grid = new Grid<GreetingModel>(initStore(serviceGetData()), initColumnModel());
+        grid = new Grid<GreetingModel>(new ListStore<GreetingModel>(), initColumnModel());
         grid.setSize(800, 400);
         grid.setBorders(true);
-    }
-
-    private List<Greeting> serviceGetData() {
-        List<Greeting> data = null;
-        ServiceFactory.getGreetingService().getGreetings(new AsyncCallback<List<Greeting>>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                ErrorWindow.showError();
-            }
-
-            @Override
-            public void onSuccess(List<Greeting> result) {
-                //TODO implement
-//                data = result;
-            }
-        });
-        return data;
-    }
-
-    private void initData() {
-        ListStore<ModelData> store = new ListStore<ModelData>();
-//        this.store = store;
-
+        updateData();
     }
 
     private ColumnModel initColumnModel() {
@@ -90,9 +68,22 @@ public class GreetingGrid {
         return store;
     }
 
-    public void updateData(List<GreetingModel> data) {
-        ListStore<GreetingModel> store = new ListStore<GreetingModel>();
-        store.add(data);
-//        reconfigure(store, getColumnModel());
+    public void updateData() {
+        ServiceFactory.getGreetingService().getAllGreetings(new AsyncCallback<List<Greeting>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                ErrorWindow.showError(caught);
+            }
+
+            @Override
+            public void onSuccess(List<Greeting> result) {
+                updateData(result);
+            }
+        });
+    }
+
+    public void updateData(List<Greeting> data) {
+        ListStore<GreetingModel> store = initStore(data);
+        grid.reconfigure(store, grid.getColumnModel());
     }
 }

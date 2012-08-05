@@ -11,10 +11,19 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:/config/springConfig.xml</param-value>
     </context-param>
-
+    
+    <!--<context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:/config/log4j.xml</param-value>
+    </context-param>-->
+    
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
+    <!--<listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>-->
 
     <!-- Servlets -->
     <servlet>
@@ -24,7 +33,7 @@
 
     <servlet-mapping>
         <servlet-name>springGwtRemoteServiceServlet</servlet-name>
-        <url-pattern>/SpringGwtService/*</url-pattern>
+        <url-pattern>/App/service/*</url-pattern>
     </servlet-mapping>
 
     <!-- Default page to serve -->

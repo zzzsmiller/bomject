@@ -1,10 +1,15 @@
 package my.application.client.panel;
 
+import com.extjs.gxt.ui.client.widget.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import my.application.client.common.ErrorWindow;
+import my.application.client.common.ServiceFactory;
 import my.application.client.utils.FormSizeUtil;
 import my.application.client.ImgResources;
+import my.application.client.widgets.ErrorLabel;
 
 /**
  * Created with IntelliJ IDEA.
@@ -36,5 +41,22 @@ public class HeaderPanel extends FlowPanel {
 
         add(csdc);
         add(logo);
+//        testService();
+    }
+
+    private void testService() {
+        ServiceFactory.getGreetingService().test(new AsyncCallback<String>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                ErrorWindow.showError(caught);
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                Window window = new Window();
+                window.add(new ErrorLabel(result));
+                window.show();
+            }
+        });
     }
 }
