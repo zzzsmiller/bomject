@@ -30,24 +30,24 @@ public class GreetingServiceImpl implements GreetingService {
 
     @Override
     public void addGreeting(Greeting greeting) {
-//        mapper.addGreeting(greeting);
+        mapper.addGreeting(greeting);
     }
 
     @Override
     public void removeGreeting(int id) {
-//        mapper.removeGreeting(id);
+        mapper.removeGreeting(id);
     }
 
     @Override
     public Greeting getGreeting(int id) {
-//        return mapper.getGreeting(id);
-        return null;
+        return mapper.getGreeting(id);
+//        return null;
     }
 
     @Override
     public List<Greeting> getGreetingByAuthor(String author) {
-//        return mapper.getGreetingByAuthor(author);
-        return null;
+        return mapper.getGreetingByAuthor(author);
+//        return null;
     }
 
     @Override

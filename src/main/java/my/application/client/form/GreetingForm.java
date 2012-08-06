@@ -1,14 +1,19 @@
 package my.application.client.form;
 
+import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.widget.Label;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.DateField;
 import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.extjs.gxt.ui.client.widget.form.TextField;
 import com.extjs.gxt.ui.client.widget.layout.FormData;
-import my.application.client.common.Menu;
-import my.application.client.common.MessageFacotry;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import my.application.client.common.*;
 import my.application.client.i18n.GreetingFormMessages;
-import my.application.client.widgets.ErrorLabel;
+import my.application.shared.entity.Greeting;
+
+import java.util.Timer;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,18 +24,46 @@ import my.application.client.widgets.ErrorLabel;
  */
 public class GreetingForm extends FormPanel {
 
-    private FormData formData;
+    private FormData formLayout;
     private TextField author;
     private TextField text;
     private DateField date;
     private Button buttonA;
     private Button buttonB;
     private GreetingFormMessages msgs;
+    private Greeting greeting;
+    private GreetingForm instance;
+
+    private class SaveSelectionListener extends SelectionListener<ButtonEvent> {
+        @Override
+        public void componentSelected(ButtonEvent ce) {
+            ServiceFactory.getGreetingService().addGreeting(getFormData(), new AsyncCallback<Void>() {
+                @Override
+                public void onFailure(Throwable caught) {
+                    ErrorWindow.showError(caught);
+                }
+
+                @Override
+                public void onSuccess(Void result) {
+                    SuccessLabel.addLabel(instance);
+                }
+            });
+        }
+    }
+
+    private Greeting getFormData() {
+        Greeting greeting = new Greeting();
+        greeting.setAuthor((String) author.getValue());
+        greeting.setText((String) text.getValue());
+        greeting.setDate(date.getValue());
+        return greeting;
+    }
 
     public GreetingForm(Menu point) {
-        formData = new FormData();
+        formLayout = new FormData();
         initForm();
         setMode(point);
+        instance = this;
     }
 
     private void initForm() {
@@ -41,17 +74,17 @@ public class GreetingForm extends FormPanel {
 
         author = new TextField();
         author.setFieldLabel(msgs.author());
-        add(author, formData);
+        add(author, formLayout);
 
         text = new TextField();
         text.setFieldLabel(msgs.text());
-        add(text, formData);
+        add(text, formLayout);
 
         date = new DateField();
         date.setFieldLabel(msgs.date());
         date.setFormatValue(true);
         date.setEnabled(false);
-        add(date, formData);
+        add(date, formLayout);
 
         buttonA = new Button();
         buttonB = new Button();
@@ -63,6 +96,12 @@ public class GreetingForm extends FormPanel {
         switch (point) {
             case ADD_COMMENT:
                 buttonA.setText(msgs.add());
+                buttonA.addSelectionListener(new SelectionListener<ButtonEvent>() {
+                    @Override
+                    public void componentSelected(ButtonEvent ce) {
+
+                    }
+                });
                 buttonB.setText(msgs.cancel());
                 date.setVisible(false);
                 break;
@@ -78,6 +117,8 @@ public class GreetingForm extends FormPanel {
                 break;
         }
     }
+
+
 
 
 }

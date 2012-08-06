@@ -9,7 +9,7 @@
     <groupId>my.application</groupId>
     <artifactId>bomject</artifactId>
     <packaging>war</packaging>
-    <version>2.5</version>
+    <version>2.6</version>
     <name>bomject</name>
 
     <properties>
