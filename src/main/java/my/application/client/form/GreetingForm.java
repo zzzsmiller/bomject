@@ -2,18 +2,16 @@ package my.application.client.form;
 
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
-import com.extjs.gxt.ui.client.widget.Label;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.DateField;
 import com.extjs.gxt.ui.client.widget.form.FormPanel;
+import com.extjs.gxt.ui.client.widget.form.TextArea;
 import com.extjs.gxt.ui.client.widget.form.TextField;
 import com.extjs.gxt.ui.client.widget.layout.FormData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import my.application.client.common.*;
 import my.application.client.i18n.GreetingFormMessages;
 import my.application.shared.entity.Greeting;
-
-import java.util.Timer;
 
 /**
  * Created with IntelliJ IDEA.
@@ -46,8 +44,19 @@ public class GreetingForm extends FormPanel {
                 @Override
                 public void onSuccess(Void result) {
                     SuccessLabel.addLabel(instance);
+                    buttonB.setEnabled(true);
                 }
             });
+        }
+    }
+
+    private class ClearSelectionListener extends SelectionListener<ButtonEvent> {
+        @Override
+        public void componentSelected(ButtonEvent ce) {
+            author.clear();
+            text.clear();
+            date.clear();
+            ce.getButton().setEnabled(false);
         }
     }
 
@@ -74,10 +83,14 @@ public class GreetingForm extends FormPanel {
 
         author = new TextField();
         author.setFieldLabel(msgs.author());
+        author.setEmptyText("Введите ваше имя");
+        author.setMinLength(1);
         add(author, formLayout);
 
-        text = new TextField();
+        text = new TextArea();
         text.setFieldLabel(msgs.text());
+        text.setEmptyText("Введите текст сообщения");
+        text.setMinLength(1);
         add(text, formLayout);
 
         date = new DateField();
@@ -96,17 +109,15 @@ public class GreetingForm extends FormPanel {
         switch (point) {
             case ADD_COMMENT:
                 buttonA.setText(msgs.add());
-                buttonA.addSelectionListener(new SelectionListener<ButtonEvent>() {
-                    @Override
-                    public void componentSelected(ButtonEvent ce) {
-
-                    }
-                });
+                buttonA.addSelectionListener(new SaveSelectionListener());
                 buttonB.setText(msgs.cancel());
+                buttonB.setEnabled(false);
+                buttonB.addSelectionListener(new ClearSelectionListener());
                 date.setVisible(false);
                 break;
             case EDIT_COMMENT:
                 buttonA.setText(msgs.save());
+//                buttonA.addSelectionListener(new SaveSelectionListener());
                 buttonB.setText(msgs.cancel());
                 date.setVisible(true);
                 break;
@@ -117,8 +128,4 @@ public class GreetingForm extends FormPanel {
                 break;
         }
     }
-
-
-
-
 }
