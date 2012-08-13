@@ -1,7 +1,11 @@
 package my.application.client.form;
 
 
+import com.extjs.gxt.ui.client.event.BaseEvent;
+import com.extjs.gxt.ui.client.event.Events;
+import com.extjs.gxt.ui.client.event.Listener;
 import com.extjs.gxt.ui.client.store.ListStore;
+import com.extjs.gxt.ui.client.widget.Component;
 import com.extjs.gxt.ui.client.widget.grid.ColumnConfig;
 import com.extjs.gxt.ui.client.widget.grid.ColumnModel;
 import com.extjs.gxt.ui.client.widget.grid.Grid;
@@ -39,6 +43,18 @@ public class GreetingGrid {
         grid.setSize(800, 400);
         grid.setBorders(true);
         updateData();
+
+        getGrid().addListener(Events.Attach, new Listener<BaseEvent>() {
+            @Override
+            public void handleEvent(BaseEvent be) {
+                ((Component)getGrid().getParent()).addListener(Events.Show, new Listener<BaseEvent>() {
+                                                        @Override
+                                                        public void handleEvent(BaseEvent be) {
+                                                            updateData();
+                                                        }
+                                                    });
+            }
+        });
     }
 
     private ColumnModel initColumnModel() {
