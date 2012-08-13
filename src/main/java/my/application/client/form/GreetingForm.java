@@ -60,19 +60,11 @@ public class GreetingForm extends FormPanel {
         }
     }
 
-    private Greeting getFormData() {
-        Greeting greeting = new Greeting();
-        greeting.setAuthor((String) author.getValue());
-        greeting.setText((String) text.getValue());
-        greeting.setDate(date.getValue());
-        return greeting;
-    }
-
     public GreetingForm(Menu point) {
+        instance = this;
         formLayout = new FormData();
         initForm();
         setMode(point);
-        instance = this;
     }
 
     private void initForm() {
@@ -127,5 +119,14 @@ public class GreetingForm extends FormPanel {
                 date.setVisible(false);
                 break;
         }
+    }
+
+
+    private Greeting getFormData() {
+        Greeting greeting = new Greeting();
+        greeting.setAuthor((String) author.getValue());
+        greeting.setText((String) text.getValue());
+        greeting.setDate(date.getValue());
+        return greeting;
     }
 }

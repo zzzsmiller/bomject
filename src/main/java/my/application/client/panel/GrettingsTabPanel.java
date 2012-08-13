@@ -40,18 +40,6 @@ public class GrettingsTabPanel extends TabPanel implements MenuObserver, MenuSub
             } else if (Menu.SHOW_ALL.equals(point)) {
                 final GreetingGrid greetingGrid = new GreetingGrid();
                 add(greetingGrid.getGrid());
-                addListener(Events.OnFocus, new Listener<BaseEvent>() {
-                    @Override
-                    public void handleEvent(BaseEvent be) {
-                        greetingGrid.updateData();
-                    }
-                });
-                /*addAttachHandler(new AttachEvent.Handler() {
-                    @Override
-                    public void onAttachOrDetach(AttachEvent event) {
-                        greetingGrid.updateData();
-                    }
-                });*/
             } else {
                 add(new GreetingForm(point));
             }
