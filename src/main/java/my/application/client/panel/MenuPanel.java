@@ -63,19 +63,12 @@ public class MenuPanel extends VerticalPanel implements MenuSubject, MenuObserve
 
         vp.setSpacing(20);
 
-        MenuLabel menuLabel = new MenuLabel(Menu.ADD_COMMENT);
-        menuItems.put(Menu.ADD_COMMENT, menuLabel);
-        vp.add(menuLabel);
-        selectedItem = menuLabel;
-        menuLabel = new MenuLabel(Menu.EDIT_COMMENT);
-        menuItems.put(Menu.EDIT_COMMENT, menuLabel);
-        vp.add(menuLabel);
-        menuLabel = new MenuLabel(Menu.DEL_COMMENT);
-        menuItems.put(Menu.DEL_COMMENT, menuLabel);
-        vp.add(menuLabel);
-        menuLabel = new MenuLabel(Menu.SHOW_ALL);
-        menuItems.put(Menu.SHOW_ALL, menuLabel);
-        vp.add(menuLabel);
+        for (Menu menu : Menu.values()) {
+            MenuLabel menuLabel = new MenuLabel(menu);
+            menuItems.put(menu, menuLabel);
+            vp.add(menuLabel);
+        }
+        selectedItem = menuItems.get(Menu.SHOW_ALL);
     }
 
     public void setSelected(Menu menuItem) {

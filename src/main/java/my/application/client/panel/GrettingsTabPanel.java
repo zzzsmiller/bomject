@@ -64,28 +64,12 @@ public class GrettingsTabPanel extends TabPanel implements MenuObserver, MenuSub
     }
 
     private void initTabBar() {
-        MenuTabItem tabItem = new MenuTabItem(Menu.SHOW_ALL);
-        tabs.put(Menu.SHOW_ALL, tabItem);
-        tabItem.setScrollMode(Style.Scroll.AUTOY);
-        for (int i = 0; i < 1000; i++) {
-            tabItem.add(new HTML("bla-bla-bla"));
+        for (Menu menu : Menu.values()) {
+            MenuTabItem tabItem = new MenuTabItem(menu);
+            tabs.put(menu, tabItem);
+            tabItem.setScrollMode(Style.Scroll.AUTOY);
+            add(tabItem);
         }
-        add(tabItem);
-
-        tabItem = new MenuTabItem(Menu.ADD_COMMENT);
-        tabs.put(Menu.ADD_COMMENT, tabItem);
-        tabItem.addText("blu-blu-blu");
-        add(tabItem);
-
-        tabItem = new MenuTabItem(Menu.EDIT_COMMENT);
-        tabs.put(Menu.EDIT_COMMENT, tabItem);
-        tabItem.addText("bli-bli-bli");
-        add(tabItem);
-
-        tabItem = new MenuTabItem(Menu.DEL_COMMENT);
-        tabs.put(Menu.DEL_COMMENT, tabItem);
-        tabItem.addText("ble-ble-ble");
-        add(tabItem);
     }
 
     @Override

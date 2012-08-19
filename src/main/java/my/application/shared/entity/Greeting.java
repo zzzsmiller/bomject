@@ -14,11 +14,21 @@ public class Greeting implements Serializable {
 
     private static final long serialVersionUID = 586687042133180491L;
 
+    private Integer id;
+
     private String author;
 
     private String text;
 
     private Date date;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getAuthor() {
         return author;
@@ -47,7 +57,8 @@ public class Greeting implements Serializable {
     @Override
     public String toString() {
         return "Greeting{" +
-                "author='" + author + '\'' +
+                "id=" + id +
+                ", author='" + author + '\'' +
                 ", text='" + text + '\'' +
                 ", date=" + date +
                 '}';
